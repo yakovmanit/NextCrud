@@ -36,9 +36,17 @@ export const POST = async (req: NextRequest) => {
   }
 }
 
-export const GET = async () => {
+export const GET = async (req: NextRequest) => {
   try {
+    const id : string | null = req.nextUrl.searchParams.get("id");
+
     await connectMongoDB();
+
+    if (id) {
+      const topic = await Topic.findById(id);
+
+      return NextResponse.json(topic);
+    }
 
     const topics = await Topic.find();
 
