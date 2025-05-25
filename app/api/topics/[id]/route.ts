@@ -1,6 +1,7 @@
 import {NextRequest, NextResponse} from "next/server";
 import connectMongoDB from "@/libs/mongodb";
 import Topic from "@/models/topic";
+import {ITopicCreate} from "@/app/api/topics/route";
 
 interface IPutTopicParams {
   params: {
@@ -8,16 +9,11 @@ interface IPutTopicParams {
   }
 }
 
-interface IUpdateTopicBody {
-  title: string;
-  description: string;
-}
-
 export const PUT = async (req: NextRequest, { params }: IPutTopicParams) => {
   try {
     const { id } = params;
 
-    const { title, description }: IUpdateTopicBody = await req.json();
+    const { title, description }: ITopicCreate = await req.json();
 
     await connectMongoDB();
 

@@ -1,10 +1,11 @@
 import mongoose, {Model, Document} from "mongoose";
 
-interface ITopic extends Document {
+export interface ITopic extends Document {
   title: string,
   description: string,
   createdAt: Date,
   updatedAt: Date,
+  _id: string
 }
 
 const topicSchema = new mongoose.Schema<ITopic>(

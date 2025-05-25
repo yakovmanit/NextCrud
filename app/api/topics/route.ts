@@ -2,7 +2,7 @@ import {NextRequest, NextResponse} from "next/server";
 import connectMongoDB from "@/libs/mongodb";
 import Topic from "@/models/topic";
 
-interface ITopicCreate {
+export interface ITopicCreate {
   title: string;
   description: string;
 }
